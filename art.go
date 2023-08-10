@@ -1,25 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
 
-import "time"
-
-import "github.com/fatih/color"
-
-import "github.com/olekukonko/ts"
-
-import "github.com/inancgumus/screen"
-
-import "math/rand"
+	"github.com/fatih/color"
+	"github.com/olekukonko/ts"
+	"github.com/inancgumus/screen"
+)
 
 func main() {
 	screen.Clear()
-	for true {
+	for {
 		size, _ := ts.GetSize()
 		for x := 0; x < size.Row(); x++ {
 			for i := 0; i < size.Col(); i++ {
-				random := rand.Intn(5)
-				switch random {
+				switch rand.Intn(5) {
 				case 1:
 					color.Set(color.FgBlue)
 				case 2:
@@ -32,11 +29,11 @@ func main() {
 					color.Set(color.FgGreen)
 				case 6:
 					color.Set(color.FgMagenta)
-				}	
+				}
 				fmt.Printf("▊")
-				color.Unset()
 			}
 		}
+		color.Unset()
 		time.Sleep(5 * time.Second)
 	}
 }
